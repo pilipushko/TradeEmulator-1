@@ -5,6 +5,9 @@
     using System.Globalization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Converters;
+    /// <summary>
+    //67658768756
+    /// </summary>
 
     public partial class ChartData
     {
