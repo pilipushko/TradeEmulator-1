@@ -1,0 +1,43 @@
+﻿
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    string site = "https://poloniex.com/public?command=returnTradeHistory&currencyPair=BTC_ETH";
+    string FileName = "returnTradeHistory";
+    var data = QuickType.TradeHistory.FromJson(QuickType.JsonToString.GetString(site, FileName));
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link type="text/css" rel="stylesheet" href="../../Content/Site.css" />
+</head>
+<body>
+    <div>
+        <table>
+            <tr>
+                <td><p>Глобальный ID сделки:</p></td>
+                <td><p>ID сделки:</p></td>
+                <td><p>Дата:</p></td>
+                <td><p>Тип:</p></td>
+                <td><p>Цена:</p></td>
+                <td><p>Количество:</p></td>
+                <td><p>Всего:</p></td>
+            </tr>
+            @foreach (QuickType.TradeHistory value in data)
+            {
+                <tr>
+                    <td><p>@value.GlobalTradeId</p></td>
+                    <td><p>@value.TradeId</p></td>
+                    <td><p>@value.Date</p></td>
+                    <td><p>@value.Type</p></td>
+                    <td><p>@value.Rate</p></td>
+                    <td><p>@value.Amount</p></td>
+                    <td><p>@value.Total</p></td>
+                </tr>
+            }
+        </table>
+    </div>
+</body>
+</html>
